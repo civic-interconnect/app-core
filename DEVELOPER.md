@@ -32,12 +32,3 @@ After verifying changes:
 app-core bump-version 1.0.4 0.0.1
 app-core release
 ```
-
-## Test Web App Locally
-
-```powershell
-cd docs
-py -m http.server 8000
-```
-
-Visit: <http://localhost:8000>
