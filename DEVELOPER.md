@@ -33,15 +33,6 @@ app-core bump-version 1.0.4 0.0.1
 app-core release
 ```
 
-## Publishing to PyPI
-
-Requires valid PyPI token:
-
-```powershell
-py -m build
-py -m twine upload dist/*
-```
-
 ## Test Web App Locally
 
 ```powershell
