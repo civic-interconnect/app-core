@@ -18,7 +18,6 @@
   text-align: center;
 }
 
-/* Match heading styles from base.css */
 .ci-header h1,
 .ci-header h2,
 .ci-header h3 {
@@ -27,13 +26,8 @@
   font-family: "Roboto", sans-serif;
 }
 
-/* Slot-supplied h2/h3 titles should still respect theme */
-.ci-header h2,
-.ci-header h3 {
-  color: var(--color-blue);
-}
 
-/* Match original link styles */
+/*  link styles */
 .ci-header a {
   color: var(--color-blue);
   text-decoration: none;

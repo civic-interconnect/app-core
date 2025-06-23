@@ -1,14 +1,16 @@
 const CACHE_NAME = "ci-core-cache-v1";
+const BASE_PATH = "/app-core/";
 const urlsToCache = [
-  "./",
-  "./index.html",
-  "./script.js",
-  "./style.css",
-  "./manifest.json",
-  "./components/ci-agent.js",
-  "./components/ci-footer.js",
-  "./components/ci-header.js",
-  "./status.json"
+  `${BASE_PATH}`,
+  `${BASE_PATH}index.html`,
+  `${BASE_PATH}index.js`,
+  `${BASE_PATH}manifest.json`,
+  `${BASE_PATH}components/ci-footer.js`,
+  `${BASE_PATH}components/ci-header.js`,
+  `${BASE_PATH}styles/app.css`,
+  `${BASE_PATH}styles/base.css`,
+  `${BASE_PATH}styles/themes.css`,
+  `${BASE_PATH}styles/tokens.css`,
 ];
 
 self.addEventListener("install", (event) => {
@@ -19,8 +21,8 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(
-      (response) => response || fetch(event.request)
-    )
+    caches
+      .match(event.request)
+      .then((response) => response || fetch(event.request))
   );
 });
