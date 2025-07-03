@@ -29,6 +29,6 @@ Visit: <http://localhost:8000>
 After verifying changes:
 
 ```powershell
-app-core bump-version 1.0.4 0.0.1
+app-core bump-version 0.0.1 0.0.2
 app-core release
 ```

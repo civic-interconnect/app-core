@@ -43,43 +43,47 @@
 </head>
 
 <body>
-    <button class="theme-toggle"
-        onclick="document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';">
-        🔆
-    </button>
+    <ci-theme-toggle></ci-theme-toggle>
 
     <div class="page-wrapper">
 
-        <ci-header>
-            <span slot="title">Civic Interconnect App (Core)</span>
-            <span slot="subtitle">Shared App Content</span>
+        <ci-header title="Civic Interconnect App (Core)" subtitle="Shared App Content">
         </ci-header>
 
-        <main>
+        <main class="page-content">
             <section>
                 <p>custom content goes here</p>
             </section>
         </main>
 
-        <ci-footer>
-            <!-- Footer links -->
-
-            <a slot="siteURL" href="https://civic-interconnect.github.io/app-core/" target="_blank"
-                rel="noopener">Site</a>
-            <a slot="sourceURL" href="https://github.com/civic-interconnect/app-core" target="_blank"
-                rel="noopener">Source</a>
-
-            <!-- Footer metadata -->
-
+        <ci-footer dashboardVersion="v0.9.1" lastUpdated="2025-09-22"
+            siteURL="https://civic-interconnect.github.io/app-core/"
+            sourceURL="https://github.com/civic-interconnect/app-core">
+            <a slot="siteURL" href="https://civic-interconnect.github.io/app-core/" target="_blank" rel="noopener">
+                Site
+            </a>
+            <a slot="sourceURL" href="https://github.com/civic-interconnect/app-core" target="_blank" rel="noopener">
+                Source
+            </a>
             <span slot="version">Version: v0.9.1</span>
             <span slot="updated">Updated: 2025-09-22</span>
-
-            <!-- Footer copyright -->
-
-            <span slot="copyright">&copy; 2025 Civic Interconnect</span>
+            <span slot="copyright">
+                &copy; 2025 Civic Interconnect
+            </span>
         </ci-footer>
+
     </div>
+    <script>
+        if (
+            "serviceWorker" in navigator &&
+            location.hostname !== "127.0.0.1" &&
+            location.hostname !== "localhost"
+        ) {
+            navigator.serviceWorker.register("/app-core/sw.js");
+        }
+    </script>
     <script type="module" src="./index.js" defer></script>
+
 </body>
 
 </html>

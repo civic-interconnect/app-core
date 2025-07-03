@@ -51,6 +51,8 @@ def _bump_version(old_version: str, new_version: str) -> int:
         Path("pyproject.toml"),
         Path("README.md"),
         Path("setup.cfg"),
+        Path("docs/sw.js"),
+        Path("docs/VERSION"),
     ]
 
     updated_count = 0

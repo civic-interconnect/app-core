@@ -4,16 +4,14 @@
 
 :host {
   display: block;
-  background-color: var(--color-bg);
-  color: var(--color-text);
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
 }
 
 /* Header wrapper styles */
 .ci-header {
-  background: var(--color-blue);
-  color: var(--color-white);
+  background: var(--header-bg-color, var(--color-blue, #002b55));
+  color: var(--header-text-color, var(--color-white, #ffffff));
   padding: 1rem;
   text-align: center;
 }
@@ -22,18 +20,17 @@
 .ci-header h2,
 .ci-header h3 {
   margin: 0.25em 0;
-  color: var(--color-white);
+  color: var(--header-text-color, var(--color-white, #ffffff));
   font-family: "Roboto", sans-serif;
 }
 
-
-/*  link styles */
-.ci-header a {
-  color: var(--color-blue);
+/* Slotted link styles */
+::slotted(a) {
+  color: var(--header-link-color, #7dc9ff);
   text-decoration: none;
 }
 
-.ci-header a:hover {
+::slotted(a:hover) {
   text-decoration: underline;
 }
 
@@ -42,7 +39,7 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background-color: var(--color-white);
+  background-color: var(--color-white, #ffffff);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -55,5 +52,5 @@
 
 .theme-toggle:hover {
   background-color: black;
-  color: var(--color-white);
+  color: var(--color-white, #ffffff);
 }
