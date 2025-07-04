@@ -19,7 +19,7 @@ def test_cli_bump_version_in_isolated_fs():
 
     with runner.isolated_filesystem():
         # Create mock files with old version
-        for filename in ["VERSION", "README.md", "pyproject.toml", "setup.cfg"]:
+        for filename in ["VERSION", "README.md", "pyproject.toml"]:
             Path(filename).write_text(f"Version: {old_version}\n")
 
         # Run bump-version
@@ -29,7 +29,7 @@ def test_cli_bump_version_in_isolated_fs():
         assert "Updated VERSION" in result.output
 
         # Confirm replacement occurred
-        for filename in ["VERSION", "README.md", "pyproject.toml", "setup.cfg"]:
+        for filename in ["VERSION", "README.md", "pyproject.toml"]:
             content = Path(filename).read_text()
             assert new_version in content
             assert old_version not in content

@@ -5,7 +5,7 @@
 
 import "./components/ci-footer/ci-footer.js";
 import "./components/ci-header/ci-header.js";
-import { patchFooterStatus } from "./utils/ci-footer-status.js";
+import { patchFooterStatus } from "./index-init.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   console.log("Civic Interconnect App Core initialized");

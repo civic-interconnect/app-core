@@ -6,7 +6,7 @@
  * and faster load times across Civic Interconnect apps.
  */
 
-const CACHE_NAME = "ci-core-cache-0.0.1";
+const CACHE_NAME = "ci-core-cache-0.0.3";
 const BASE_PATH = "/app-core/";
 
 const urlsToCache = [

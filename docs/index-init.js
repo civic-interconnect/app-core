@@ -1,5 +1,5 @@
 /**
- * utils/ci-footer-status.js
+ * index-init.js
  * Civic Interconnect App Core
  *
  * Patches the <ci-footer> component with version and
@@ -12,7 +12,7 @@
  *
  * Usage:
  *
- *   import { patchFooterStatus } from './ci-footer-status.js';
+ *   import { patchFooterStatus } from './index-init.js';
  *
  *   patchFooterStatus('./VERSION');
  *   // or:
@@ -20,8 +20,6 @@
  *
  * The function auto-detects file format (text vs JSON).
  */
-
-import { createSlotSpan } from "./ui-utils.js";
 
 /**
  * Loads version info from a file and patches the <ci-footer>.
@@ -34,23 +32,26 @@ import { createSlotSpan } from "./ui-utils.js";
  *      }
  */
 export async function patchFooterStatus(versionPath = "./VERSION") {
-  let version = "v0.0.0";
+  console.log(`Patching footer status from: ${versionPath}`);
+  let version = "0.0.0";
   let updated = new Date().toISOString().split("T")[0];
 
   try {
     const res = await fetch(versionPath);
+    console.log(`Fetched version info from ${versionPath}:`, res);
 
     if (res.ok) {
       const contentType = res.headers.get("content-type") || "";
-
       if (contentType.includes("application/json")) {
         const json = await res.json();
         version = json.dashboard_version || version;
         updated = json.generated || updated;
       } else {
-        // Assume plain text VERSION file
         version = (await res.text()).trim();
       }
+      console.log(`Version loaded: ${version}`);
+    } else {
+      console.warn(`VERSION fetch returned HTTP ${res.status}`);
     }
   } catch (e) {
     console.error(`Failed to fetch version info from ${versionPath}:`, e);
@@ -58,16 +59,7 @@ export async function patchFooterStatus(versionPath = "./VERSION") {
 
   const footer = document.querySelector("ci-footer");
   if (footer) {
-    footer
-      .querySelector('[slot="version"]')
-      ?.replaceWith(
-        createSlotSpan("version", `Version: ${version}`)
-      );
-
-    footer
-      .querySelector('[slot="updated"]')
-      ?.replaceWith(
-        createSlotSpan("updated", `Updated: ${updated}`)
-      );
+    footer.setAttribute("dashboard-version", version);
+    footer.setAttribute("last-updated", updated);
   }
 }

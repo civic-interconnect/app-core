@@ -23,13 +23,13 @@
   line-height: 1.2;
 }
 
-/* Scoped link styles for slotted anchors */
-::slotted(a) {
+/* Scoped link styles for inner anchors */
+a {
   color: var(--footer-link-color);
   text-decoration: none;
 }
 
-::slotted(a:hover) {
+a:hover {
   color: var(--footer-link-hover-color);
   text-decoration: underline;
 }
@@ -42,6 +42,6 @@
   color: var(--footer-text-color-dark);
 }
 
-:host-context(body[data-theme="dark"]) ::slotted(a) {
+:host-context(body[data-theme="dark"]) a {
   color: var(--footer-link-color-dark);
 }
